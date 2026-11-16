@@ -1,0 +1,111 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Brand tokens — use as Tailwind utilities, e.g. bg-ink, text-coral, font-display */
+@theme {
+  --color-cream: #f7f2e8;
+  --color-ink: #0e2f2e;
+  --color-ink-800: #164544;
+  --color-teal: #1f5e5a;
+  --color-teal-700: #1f4f4b;
+  --color-coral: #ff8a5b;
+  --color-coral-600: #ff7a45;
+  --color-mint: #dce8e2;
+  --color-peach: #ffd9c7;
+  --color-mist: #b9cfcb;
+  --color-subtle: #4a5d5b;
+  --color-line: #d8d0bf;
+  --color-sand: #efe8d8;
+  --color-edge: #e4ddcb;
+  --color-hair: #eee8da;
+  --color-stone: #cfc6b2;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-sans);
+}
+
+/* shadcn/ui semantic tokens, mapped to the brand below in :root */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: #f7f2e8; /* cream */
+  --foreground: #0e2f2e; /* ink */
+  --card: #ffffff;
+  --card-foreground: #0e2f2e;
+  --popover: #ffffff;
+  --popover-foreground: #0e2f2e;
+  --primary: #ff8a5b; /* coral: the one main action */
+  --primary-foreground: #0e2f2e;
+  --secondary: #efe8d8; /* sand */
+  --secondary-foreground: #0e2f2e;
+  --muted: #efe8d8;
+  --muted-foreground: #3f5654; /* secondary text, 4.5:1+ on cream and white */
+  --accent: #dce8e2; /* mint */
+  --accent-foreground: #0e2f2e;
+  --destructive: #b3361b;
+  --border: #e4ddcb; /* edge */
+  --input: #e4ddcb;
+  --ring: #1f5e5a; /* teal */
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1240px;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* App surfaces use their own type pairing (see src/lib/app-fonts.ts). */
+.app-type {
+  --font-sans: var(--font-app-sans), system-ui, sans-serif;
+  --font-display: var(--font-app-display), Georgia, serif;
+  font-family: var(--font-sans);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+  :focus-visible {
+    @apply rounded-sm outline-2 outline-offset-2 outline-teal;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
