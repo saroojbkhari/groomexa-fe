@@ -24,6 +24,12 @@ export const routes = {
   forgotPassword: "/forgot-password",
   resetPassword: "/reset-password",
   app: "/dashboard",
+  /** App screens linked from the dashboard; pages not built yet. */
+  clients: "/clients",
+  pets: "/pets",
+  visits: "/visits",
+  newVisit: "/visits/new",
+  calendar: "/calendar",
   contact: "/contact",
   privacy: "/privacy",
   terms: "/terms",

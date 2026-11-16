@@ -16,6 +16,15 @@ const paths = {
   x: <path d="M18 6 6 18M6 6l12 12" />,
   sliders: <><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0" /><circle cx="16" cy="6" r="2" /><circle cx="10" cy="12" r="2" /><circle cx="18" cy="18" r="2" /></>,
   chevron: <path d="m6 9 6 6 6-6" />,
+  plus: <path d="M12 5v14M5 12h14" />,
+  user: <><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" /></>,
+  pulse: <path d="M3 12h4l3-8 4 16 3-8h4" />,
+  dollar: <path d="M12 2v20M17 6.5C17 4.6 14.8 3.5 12 3.5S7 4.8 7 7s2.2 3 5 3.5 5 1.5 5 3.8-2.2 3.7-5 3.7-5-1.1-5-3" />,
+  star: <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9Z" />,
+  trendUp: <path d="m3 17 6-6 4 4 8-8M15 7h6v6" />,
+  trendDown: <path d="m3 7 6 6 4-4 8 8M15 17h6v-6" />,
+  clock: <><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></>,
+  arrowRight: <path d="M5 12h14M13 6l6 6-6 6" />,
 };
 
 export type IconName = keyof typeof paths;
