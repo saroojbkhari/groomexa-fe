@@ -23,6 +23,8 @@ export const routes = {
   signup: "/signup",
   forgotPassword: "/forgot-password",
   resetPassword: "/reset-password",
+  /** Target of the link in the verification email (the backend's APP_URL + this path). */
+  verifyEmail: "/verify-email",
   app: "/dashboard",
   /** App screens linked from the dashboard; pages not built yet. */
   clients: "/clients",

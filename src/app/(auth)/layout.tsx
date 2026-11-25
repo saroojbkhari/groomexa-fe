@@ -1,5 +1,5 @@
-import { Logo } from "@/components/shared/logo";
-import { Icon } from "@/components/shared/icon";
+import Logo from "@/components/Logo";
+import Icon from "@/components/Icon";
 
 const POINTS = [
   "Online booking that only offers slots the dog actually fits",

@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Inter } from "next/font/google";
 import { siteConfig } from "@/config/site";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { organizationSchema } from "@/lib/structured-data";
+import JsonLd from "@/components/JsonLd";
+import SessionProvider from "@/containers/SessionProvider";
+import StoreProvider from "@/containers/StoreProvider";
+import { SESSION_ATTRIBUTE_SCRIPT } from "@/constants/storage";
+import { organizationSchema } from "@/utils/structuredData";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -36,10 +39,16 @@ export const viewport: Viewport = { themeColor: siteConfig.themeColor };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${inter.variable} ${bricolage.variable}`}>
+    // suppressHydrationWarning: the inline script below adds data-session to <html> before React loads.
+    <html lang="en" className={`${inter.variable} ${bricolage.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: SESSION_ATTRIBUTE_SCRIPT }} />
+      </head>
       <body>
         <JsonLd data={organizationSchema} />
-        {children}
+        <StoreProvider>
+          <SessionProvider>{children}</SessionProvider>
+        </StoreProvider>
       </body>
     </html>
   );

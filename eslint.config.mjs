@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Reference project kept for comparison, not part of this app.
+    "src copy/**",
   ]),
 ]);
 

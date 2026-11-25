@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { routes } from "@/config/site";
-import { LoginForm } from "@/features/auth/LoginForm";
+import GuestRoute from "@/containers/GuestRoute";
+import Login from "@/views/Login";
 
 export const metadata: Metadata = {
   title: "Log in",
@@ -9,16 +10,21 @@ export const metadata: Metadata = {
   alternates: { canonical: routes.login },
 };
 
-async function WithNext({ searchParams }: PageProps<"/login">) {
-  const { next } = await searchParams;
-  return <LoginForm next={typeof next === "string" ? next : undefined} />;
+async function WithNotice({ searchParams }: PageProps<"/login">) {
+  const { reset } = await searchParams;
+  return <Login passwordReset={reset === "success"} />;
 }
 
-/** The form is prerendered as the fallback; `?next=/calendar` streams in to return users where they were heading. */
+/**
+ * The form is prerendered as the fallback; `?reset=success` (after a password reset) streams in.
+ * GuestRoute moves logged-in users on to `?next=` or the dashboard.
+ */
 export default function LoginPage(props: PageProps<"/login">) {
   return (
-    <Suspense fallback={<LoginForm />}>
-      <WithNext {...props} />
-    </Suspense>
+    <GuestRoute>
+      <Suspense fallback={<Login />}>
+        <WithNotice {...props} />
+      </Suspense>
+    </GuestRoute>
   );
 }

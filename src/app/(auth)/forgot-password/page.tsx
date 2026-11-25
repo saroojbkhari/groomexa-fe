@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { ForgotPasswordForm } from "@/features/auth/ForgotPasswordForm";
+import GuestRoute from "@/containers/GuestRoute";
+import ForgotPassword from "@/views/ForgotPassword";
 
 export const metadata: Metadata = { title: "Reset your password", robots: { index: false } };
 
 export default function ForgotPasswordPage() {
-  return <ForgotPasswordForm />;
+  return (
+    <GuestRoute>
+      <ForgotPassword />
+    </GuestRoute>
+  );
 }
